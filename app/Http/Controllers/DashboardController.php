@@ -89,12 +89,12 @@ class DashboardController extends Controller
             'symbol' => $symbol,
         ];
     }
-    protected function stats($wallets)
+    protected function stats($wallets, $currency = "php")
     {
         $client = new CoinGeckoClient();
         $cryptList = CryptList::all();
         $ids = $cryptList->pluck('name')->implode(',');
-        $coins = collect($client->coins()->getMarkets('php', ['ids' => $ids]));
+        $coins = collect($client->coins()->getMarkets($currency, ['ids' => $ids]));
         $data = [];
         foreach ($cryptList as $crypt) {
             $wallet = $wallets->where('crypt_list_id', $crypt->id)->first();
