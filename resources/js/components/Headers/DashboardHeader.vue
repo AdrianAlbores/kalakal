@@ -89,7 +89,7 @@
 		},
 		data() {
 			return {
-				user: 'John Smith',
+				user: user,
 				// Fixed header/sidebar-footer ( Affix component ) top offset.
 				top: 0,
 
