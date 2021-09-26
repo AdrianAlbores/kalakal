@@ -42,7 +42,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'dashboard'],function(){
     Route::get('items', [DashboardController::class, 'DashboardItems']);
 });
 
-// Route::get('/{any}', [App\Http\Controllers\HomeController::class, 'index'])->where('any', '.*')->name('home');
+Route::get('/{any}', [App\Http\Controllers\HomeController::class, 'index'])->where('any', '.*')->name('home');
 Route::get('/users','App\Http\Controllers\UserController@index');
 
 
