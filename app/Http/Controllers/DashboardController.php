@@ -97,7 +97,7 @@ class DashboardController extends Controller
         $coins = collect($client->coins()->getMarkets($currency, ['ids' => $ids]));
         $data = [];
         foreach ($cryptList as $crypt) {
-            $wallet = $wallets->where('crypt_list_id', $crypt->id)->first();
+            $wallet = $wallets ? $wallets->where('crypt_list_id', $crypt->id)->first() : null;
             $coin = $coins->where('id', '=', $crypt->name)->first();
             $data[] = [
                 'title' => $coin ? $coin['symbol'] : $crypt->short_key,
