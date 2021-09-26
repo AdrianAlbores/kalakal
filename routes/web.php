@@ -19,7 +19,6 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/sample', [sampleController::class, 'sample']);
 
 Auth::routes();
 
