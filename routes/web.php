@@ -19,6 +19,15 @@ use Illuminate\Http\Request;
 |
 */
 
+Route::get('censilyo' ,function(){
+    CryptList::create([
+        'fullname'       => 'Censilyo',
+        'name'      => 'censilyo',
+        'short_key'  => 'CNS',
+        'created_at'    => Carbon::now(),
+    ]);
+    return response()->json(CryptList::all());
+});
 
 Auth::routes();
 
