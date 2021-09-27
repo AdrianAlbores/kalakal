@@ -7,6 +7,7 @@ use App\Http\Controllers\sampleController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Models\CryptList;
 
 /*
 |--------------------------------------------------------------------------
