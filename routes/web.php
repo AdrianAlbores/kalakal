@@ -22,7 +22,7 @@ use Illuminate\Support\Carbon;
 */
 
 Route::get('censilyo' ,function(){
-    CryptList::create([
+    CryptList::insert([
         'fullname'       => 'Censilyo',
         'name'      => 'censilyo',
         'short_key'  => 'CNS',
