@@ -18,10 +18,7 @@
           :count="Wallet.exchange"
           :number-style="{ backgroundColor: '#6C757D' }"
         />
-        <a-badge
-          :count="Wallet.amount"
-          :number-style="{ backgroundColor: '#6C757D' }"
-        />
+        <a-badge :count="Wallet.amount" :number-style="{ backgroundColor: '#6C757D' }" />
         |
         <span>Est. Withdrawal from site</span>
         <span
@@ -124,14 +121,14 @@ const stats = [
     title: "BTC",
     value: 0,
     prefix: "฿ ",
-    suffix: "+30%",
+    suffix: "0%",
     icon: `storage/images/icons/btcicon.png`,
   },
   {
     title: "ETH",
     prefix: "Ξ ",
     value: 0,
-    suffix: "+20%",
+    suffix: "0%",
     icon: `storage/images/icons/ethicon.png`,
   },
   {
@@ -139,28 +136,28 @@ const stats = [
     value: 0,
     prefix: "SLP ",
     status: "danger",
-    suffix: "-20%",
+    suffix: "0%",
     icon: `storage/images/icons/slpicon.png`,
   },
   {
     title: "USDT",
     value: 0,
     prefix: "₮ ",
-    suffix: "+10%",
+    suffix: "0%",
     icon: `https://cdn.worldvectorlogo.com/logos/tether-1.svg`,
   },
   {
     title: "CNS",
     value: 0,
     prefix: "₱ ",
-    suffix: "+10%",
+    suffix: "0%",
     icon: `storage/images/icons/gcashicon.png`,
   },
   {
     title: "PHP",
     value: 0,
     prefix: "₱ ",
-    suffix: "+10%",
+    suffix: "0%",
     icon: `storage/images/icons/slpicon.png`,
   },
 ];
@@ -290,18 +287,18 @@ export default {
       tableColumns,
 
       // Counter Widgets Stats
-      stats : [],
+      stats: stats,
 
       //Wallet by Adrian
       Wallet: {
-          amount : "---- ---",
-          exchange : "---------- ---"
+        amount: "---- ---",
+        exchange: "---------- ---",
       },
 
       //Withdrawal by Adrian
       Withdrawal: {
-          amount : "---- ---",
-          exchange : "---------- ---"
+        amount: "---- ---",
+        exchange: "---------- ---",
       },
     };
   },
@@ -313,16 +310,25 @@ export default {
     async callWidgets() {
       // let {data} = await axios.get(`/api/cryptlist`,{withCredentials: true});
       // this.stats = data;
-    //   this.isLoading = false;
+      //   this.isLoading = false;
     },
     async UserEstimates() {
-        this.isLoading = true;
-        let response = await axios.get("dashboard/items");
-        this.Wallet = response.data.Wallet;
-        this.Withdrawal = response.data.Withdrawal;
-        this.stats = response.data.stats;
-        this.isLoading = false;
-
+      this.isLoading = true;
+      let { data } = await axios.get("dashboard/items");
+      this.Wallet = data.Wallet;
+      this.Withdrawal = data.Withdrawal;
+      var stats = data.stats;
+      for (var stat of this.stats) {
+        let data = stats.find(function (data) {
+          return data.title == stat.title;
+        });
+        if (data) {
+          stat.value = data.value;
+          stat.suffix = data.suffix;
+          stats.status = data.status;
+        }
+      }
+      this.isLoading = false;
     },
   },
 };

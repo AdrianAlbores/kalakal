@@ -202,49 +202,44 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
 // Bar chart for "Active Users" card.
 // Counter Widgets
- //Wallet
-// const Wallet = window.wallet;
-//Withdrawal
-// const Withdrawal = window.Withdrawal;
-// Counter Widgets stats
+ // Counter Widgets stats
 
 var stats = [{
   title: "BTC",
-  value: 0,
+  value: 0.00010789,
   prefix: "฿ ",
   suffix: "+30%",
   icon: "storage/images/icons/btcicon.png"
 }, {
   title: "ETH",
   prefix: "Ξ ",
-  value: 0,
+  value: 3.0000002,
   suffix: "+20%",
   icon: "storage/images/icons/ethicon.png"
 }, {
   title: "SLP",
-  value: 0,
+  value: 22.53,
   prefix: "SLP ",
   status: "danger",
   suffix: "-20%",
   icon: "storage/images/icons/slpicon.png"
 }, {
   title: "USDT",
-  value: 0,
+  value: 0.5780002,
   prefix: "₮ ",
   suffix: "+10%",
   icon: "https://cdn.worldvectorlogo.com/logos/tether-1.svg"
 }, {
   title: "CNS",
-  value: 0,
+  value: 3500.0,
   prefix: "₱ ",
   suffix: "+10%",
   icon: "storage/images/icons/gcashicon.png"
 }, {
   title: "PHP",
-  value: 0,
+  value: 0.0,
   prefix: "₱ ",
   suffix: "+10%",
   icon: "storage/images/icons/slpicon.png"
@@ -354,66 +349,31 @@ var tableData = [{
       // Associating table columns with its corresponding property.
       tableColumns: tableColumns,
       // Counter Widgets Stats
-      stats: [],
-      //Wallet by Adrian
-      Wallet: {
-        amount: "---- ---",
-        exchange: "---------- ---"
-      },
-      //Withdrawal by Adrian
-      Withdrawal: {
-        amount: "---- ---",
-        exchange: "---------- ---"
-      }
+      stats: stats
     };
   },
   mounted: function mounted() {
     this.callWidgets();
-    this.UserEstimates();
   },
   methods: {
-    callWidgets: function callWidgets() {// let {data} = await axios.get(`/api/cryptlist`,{withCredentials: true});
-      // this.stats = data;
-      //   this.isLoading = false;
+    callWidgets: function callWidgets() {
+      var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
+                // let {data} = await axios.get(`/api/cryptlist`,{withCredentials: true});
+                // this.stats = data;
+                _this.isLoading = false;
+
+              case 1:
               case "end":
                 return _context.stop();
             }
           }
         }, _callee);
-      }))();
-    },
-    UserEstimates: function UserEstimates() {
-      var _this = this;
-
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
-        var response;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                _this.isLoading = true;
-                _context2.next = 3;
-                return axios.get("dashboard/items");
-
-              case 3:
-                response = _context2.sent;
-                _this.Wallet = response.data.Wallet;
-                _this.Withdrawal = response.data.Withdrawal;
-                _this.stats = response.data.stats;
-                _this.isLoading = false;
-
-              case 8:
-              case "end":
-                return _context2.stop();
-            }
-          }
-        }, _callee2);
       }))();
     }
   }
@@ -438,7 +398,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.spin-content[data-v-1f79daf6] {\n  border: 1px solid #91d5ff;\n  background-color: #e6f7ff;\n  padding: 30px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.spin-content[data-v-1f79daf6] {\n    border: 1px solid #91d5ff;\n    background-color: #e6f7ff;\n    padding: 30px;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1477,32 +1437,32 @@ var render = function() {
             _vm._v(" "),
             _c("a-badge", {
               attrs: {
-                count: _vm.Wallet.exchange,
+                count: "0.00000001 BTC",
                 "number-style": { backgroundColor: "#6C757D" }
               }
             }),
             _vm._v(" "),
             _c("a-badge", {
               attrs: {
-                count: _vm.Wallet.amount,
+                count: "0.00 PHP",
                 "number-style": { backgroundColor: "#6C757D" }
               }
             }),
-            _vm._v("\n      |\n      "),
+            _vm._v(" |\n            "),
             _c("span", [_vm._v("Est. Withdrawal from site")]),
             _vm._v(" "),
             _vm._m(1),
             _vm._v(" "),
             _c("a-badge", {
               attrs: {
-                count: _vm.Withdrawal.exchange,
+                count: "0.00000001 BTC",
                 "number-style": { backgroundColor: "#6C757D" }
               }
             }),
             _vm._v(" "),
             _c("a-badge", {
               attrs: {
-                count: _vm.Withdrawal.amount,
+                count: "0.00 PHP",
                 "number-style": { backgroundColor: "#6C757D" }
               }
             })

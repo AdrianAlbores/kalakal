@@ -100,12 +100,12 @@ class DashboardController extends Controller
             $wallet = $wallets ? $wallets->where('crypt_list_id', $crypt->id)->first() : null;
             $coin = $coins->where('id', '=', $crypt->name)->first();
             $data[] = [
-                'title' => $coin ? $coin['symbol'] : $crypt->short_key,
-                'prefix' => $coin ? '$'/*$coin['symbol']*/ : '₱' /*$wallet->currency*/,
+                'title' => strtoupper($coin ? $coin['symbol'] : $crypt->short_key),
+                // 'prefix' => $coin ? '$'/*$coin['symbol']*/ : '₱' /*$wallet->currency*/,
                 'value'  => (float) number_format(($wallet? $wallet->amount : 0) / ($coin ? $coin['current_price'] : 1), 8, '.', ''),
-                'suffix' => $coin ? number_format($coin['price_change_percentage_24h'], 2) . '%' : '',
+                'suffix' => ($coin ? ($coin['price_change_percentage_24h'] > 0 ? '+' : '-'): '').($coin ? number_format($coin['price_change_percentage_24h'], 2) . '%' : ''),
                 'status' => $coin ?  ($coin['price_change_percentage_24h'] > 0 ? '' : 'danger') : '',
-                'icon' => $coin ? $coin['image'] : '',
+                // 'icon' => $coin ? $coin['image'] : '',
             ];
         }
         return $data;
