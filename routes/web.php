@@ -7,8 +7,6 @@ use App\Http\Controllers\sampleController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use App\Models\CryptList;
-use Illuminate\Support\Carbon;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,15 +19,6 @@ use Illuminate\Support\Carbon;
 |
 */
 
-Route::get('censilyo' ,function(){
-    CryptList::insert([
-        'fullname'       => 'Censilyo',
-        'name'      => 'censilyo',
-        'short_key'  => 'CNS',
-        'created_at'    => Carbon::now(),
-    ]);
-    return response()->json(CryptList::all());
-});
 
 Auth::routes();
 
