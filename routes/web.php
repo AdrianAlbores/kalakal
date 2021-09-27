@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\CryptList;
+use Illuminate\Support\Carbon;
 
 /*
 |--------------------------------------------------------------------------
