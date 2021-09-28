@@ -4,7 +4,7 @@
  -->
 
 <template>
-    <div id="container" style="width:50%; margin: 0 auto; margin-top: 13em">
+    <div id="container" style="width:50%; margin: 0 auto; margin-top: 3em">
         <a-row :gutter="18" type="flex" justify="center" align="middle">
             <!-- Sign In Form Column -->
             <a-col
@@ -16,7 +16,7 @@
             >
                 <img
                     width="100%"
-                    src="storage/images/icons/KALAKAL_greenBG.png"
+                    src="images/icons/KALAKAL_greenBG.png"
                 />
             </a-col>
             <a-col

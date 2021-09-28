@@ -1,13 +1,8 @@
 <?php
 
-use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\sampleController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,6 +14,9 @@ use Illuminate\Http\Request;
 |
 */
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
@@ -38,14 +36,7 @@ Route::post('/email/verification-notification', function (Request $request) {
     return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
-Route::group(['middleware' => 'auth', 'prefix' => 'dashboard'],function(){
-    Route::get('items', [DashboardController::class, 'DashboardItems']);
-});
-
-
 Route::get('/{any}', [App\Http\Controllers\HomeController::class, 'index'])->where('any', '.*')->name('home');
 Route::get('/users','App\Http\Controllers\UserController@index');
-
-
 
 // Route::get('/{any}', HomeController::class)->where('any', '^(?!api).*$');

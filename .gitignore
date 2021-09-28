@@ -6,6 +6,7 @@
 /vendor
 /package-lock.json
 /composer.lock
+/git-inayab
 .env
 .env.backup
 .phpunit.result.cache

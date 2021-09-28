@@ -211,20 +211,20 @@ var stats = [{
   value: 0.00010789,
   prefix: "฿ ",
   suffix: "+30%",
-  icon: "storage/images/icons/btcicon.png"
+  icon: "images/icons/btcicon.png"
 }, {
   title: "ETH",
   prefix: "Ξ ",
   value: 3.0000002,
   suffix: "+20%",
-  icon: "storage/images/icons/ethicon.png"
+  icon: "images/icons/ethicon.png"
 }, {
   title: "SLP",
   value: 22.53,
   prefix: "SLP ",
   status: "danger",
   suffix: "-20%",
-  icon: "storage/images/icons/slpicon.png"
+  icon: "images/icons/slpicon.png"
 }, {
   title: "USDT",
   value: 0.5780002,
@@ -236,13 +236,13 @@ var stats = [{
   value: 3500.0,
   prefix: "₱ ",
   suffix: "+10%",
-  icon: "storage/images/icons/gcashicon.png"
+  icon: "images/icons/cinsilyologo.png"
 }, {
   title: "PHP",
   value: 0.0,
   prefix: "₱ ",
   suffix: "+10%",
-  icon: "storage/images/icons/slpicon.png"
+  icon: "images/icons/phpicon.png"
 }]; // "Projects" table list of columns and their properties.
 
 var tableColumns = [{
@@ -366,7 +366,9 @@ var tableData = [{
               case 0:
                 // let {data} = await axios.get(`/api/cryptlist`,{withCredentials: true});
                 // this.stats = data;
-                _this.isLoading = false;
+                setTimeout(function () {
+                  _this.isLoading = false;
+                }, 1000);
 
               case 1:
               case "end":
@@ -398,7 +400,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.spin-content[data-v-1f79daf6] {\n    border: 1px solid #91d5ff;\n    background-color: #e6f7ff;\n    padding: 30px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.spin-content[data-v-1f79daf6] {\r\n    border: 1px solid #91d5ff;\r\n    background-color: #e6f7ff;\r\n    padding: 30px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

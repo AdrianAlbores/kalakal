@@ -11,7 +11,7 @@
 		:trigger="null"
 		:class="['ant-layout-sider-' + sidebarColor, 'ant-layout-sider-' + sidebarTheme]"
 		:style="{ backgroundColor: 'transparent', margin: '0px', height: '100%', borderRadius: '0%'}">
-			<div class="brand" style="text-align: center;"> <img src="storage/images/icons/logo.png"/></div>
+			<div class="brand" style="text-align: center;"> <img src="images/icons/logo.png"/></div>
 			<hr>
 			
 			<a-menu theme="light" mode="inline">

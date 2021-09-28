@@ -7,9 +7,6 @@ use JavaScript;
 use Auth;
 use App\Models\Menu;
 use Spatie\Permission\Models\Role;
-use App\Models\CryptList;
-use Codenixsv\CoinGeckoApi\CoinGeckoClient;
-use App\Models\WalletDetails;
 
 class HomeController extends Controller
 {
@@ -24,8 +21,8 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
-    public function __invoke()
-    {
+    public function __invoke(){
+        
     }
 
     /**
@@ -36,14 +33,16 @@ class HomeController extends Controller
     public function index()
     {
         $user = Auth::user();
+        // dd(Auth::user()->roles->first());
+        // dd(Auth::user()->roles);
         $menu = Menu::with('sub_menus')->get();
+        // dd($menu);
         \JavaScript::put([
-            'user' => $user->name,
-            'role' => $user->roles->first(),
-            'menu' => $menu,
+            'user'=>$user->name,
+            'role'=>$user->roles->first(),
+            'menu'=>$menu
         ]);
-
+        
         return view('home');
     }
-
 }
