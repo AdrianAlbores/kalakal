@@ -88,6 +88,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_Widgets_WidgetCounter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Widgets/WidgetCounter */ "./resources/js/components/Widgets/WidgetCounter.vue");
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -190,58 +196,46 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 // Bar chart for "Active Users" card.
 // Counter Widgets
  // Counter Widgets stats
 
 var stats = [{
   title: "BTC",
-  value: 0.00010789,
+  value: 0.0,
   prefix: "฿ ",
-  suffix: "+30%",
+  suffix: "",
   icon: "images/icons/btcicon.png"
 }, {
   title: "ETH",
   prefix: "Ξ ",
-  value: 3.0000002,
-  suffix: "+20%",
+  value: 0.0,
+  suffix: "",
   icon: "images/icons/ethicon.png"
 }, {
   title: "SLP",
-  value: 22.53,
+  value: 0.0,
   prefix: "SLP ",
-  status: "danger",
-  suffix: "-20%",
+  status: "",
+  suffix: "",
   icon: "images/icons/slpicon.png"
 }, {
   title: "USDT",
-  value: 0.5780002,
+  value: 0.0,
   prefix: "₮ ",
-  suffix: "+10%",
+  suffix: "",
   icon: "https://cdn.worldvectorlogo.com/logos/tether-1.svg"
 }, {
   title: "CNS",
-  value: 3500.0,
+  value: 0.0,
   prefix: "₱ ",
-  suffix: "+10%",
+  suffix: "",
   icon: "images/icons/cinsilyologo.png"
 }, {
   title: "PHP",
   value: 0.0,
   prefix: "₱ ",
-  suffix: "+10%",
+  suffix: "",
   icon: "images/icons/phpicon.png"
 }]; // "Projects" table list of columns and their properties.
 
@@ -349,33 +343,96 @@ var tableData = [{
       // Associating table columns with its corresponding property.
       tableColumns: tableColumns,
       // Counter Widgets Stats
-      stats: stats
+      stats: stats,
+      //Wallet by Adrian
+      Wallet: {
+        amount: "---- ---",
+        exchange: "---------- ---"
+      },
+      //Withdrawal by Adrian
+      Withdrawal: {
+        amount: "---- ---",
+        exchange: "---------- ---"
+      }
     };
   },
   mounted: function mounted() {
     this.callWidgets();
+    this.callItems();
   },
   methods: {
-    callWidgets: function callWidgets() {
-      var _this = this;
+    callWidgets: function callWidgets() {//   let {data} = await axios.get(`/api/cryptlist`,{withCredentials: true});
+      // this.stats = data;
+      //   setTimeout(() => {
+      //     this.isLoading = false;
+      //   }, 1000);
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                // let {data} = await axios.get(`/api/cryptlist`,{withCredentials: true});
-                // this.stats = data;
-                setTimeout(function () {
-                  _this.isLoading = false;
-                }, 1000);
-
-              case 1:
               case "end":
                 return _context.stop();
             }
           }
         }, _callee);
+      }))();
+    },
+    callItems: function callItems() {
+      var _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+        var titles, _yield$axios$post, data, stats, _iterator, _step, stat, _data;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _this.isLoading = true;
+                titles = _this.stats.map(function (stat) {
+                  return stat.title;
+                });
+                _context2.next = 4;
+                return axios.post("dashboard/items", {
+                  names: titles
+                });
+
+              case 4:
+                _yield$axios$post = _context2.sent;
+                data = _yield$axios$post.data;
+                _this.Wallet = data.Wallet;
+                _this.Withdrawal = data.Withdrawal;
+                stats = data.stats;
+                _iterator = _createForOfIteratorHelper(_this.stats);
+
+                try {
+                  for (_iterator.s(); !(_step = _iterator.n()).done;) {
+                    stat = _step.value;
+                    _data = stats.find(function (data) {
+                      return data.title == stat.title;
+                    });
+
+                    if (_data) {
+                      stat.value = _data.value;
+                      stat.suffix = _data.suffix;
+                      stat.status = _data.status;
+                    }
+                  }
+                } catch (err) {
+                  _iterator.e(err);
+                } finally {
+                  _iterator.f();
+                }
+
+                _this.isLoading = false;
+
+              case 12:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
       }))();
     }
   }
@@ -400,7 +457,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.spin-content[data-v-1f79daf6] {\r\n    border: 1px solid #91d5ff;\r\n    background-color: #e6f7ff;\r\n    padding: 30px;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.spin-content[data-v-1f79daf6] {\r\n  border: 1px solid #91d5ff;\r\n  background-color: #e6f7ff;\r\n  padding: 30px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1439,32 +1496,32 @@ var render = function() {
             _vm._v(" "),
             _c("a-badge", {
               attrs: {
-                count: "0.00000001 BTC",
+                count: _vm.Wallet.exchange,
                 "number-style": { backgroundColor: "#6C757D" }
               }
             }),
             _vm._v(" "),
             _c("a-badge", {
               attrs: {
-                count: "0.00 PHP",
+                count: _vm.Wallet.amount,
                 "number-style": { backgroundColor: "#6C757D" }
               }
             }),
-            _vm._v(" |\n            "),
+            _vm._v(" |\n      "),
             _c("span", [_vm._v("Est. Withdrawal from site")]),
             _vm._v(" "),
             _vm._m(1),
             _vm._v(" "),
             _c("a-badge", {
               attrs: {
-                count: "0.00000001 BTC",
+                count: _vm.Withdrawal.exchange,
                 "number-style": { backgroundColor: "#6C757D" }
               }
             }),
             _vm._v(" "),
             _c("a-badge", {
               attrs: {
-                count: "0.00 PHP",
+                count: _vm.Withdrawal.amount,
                 "number-style": { backgroundColor: "#6C757D" }
               }
             })
