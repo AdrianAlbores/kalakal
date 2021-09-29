@@ -43,9 +43,6 @@ Route::post('/email/verification-notification', function (Request $request) {
 
 Route::group(['middleware' => 'auth', 'prefix' => 'dashboard'],function(){
     Route::post('items', [DashboardController::class, 'DashboardItems']);
-    Route::get('items', function(){
-        return response()->json($menu = Menu::with('sub_menus')->get());
-    });
 });
 Route::get('/{any}', [App\Http\Controllers\HomeController::class, 'index'])->where('any', '.*')->name('home');
 Route::get('/users','App\Http\Controllers\UserController@index');
