@@ -14,13 +14,23 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
-        \App\Models\User::create([
-            'name' => 'User',
-            'email' => 'user@example.com',
+        $this->call(RoleSeeder::class);
+        // \App\Models\User::create([
+        //     'name' => 'User',
+        //     'email' => 'user@example.com',
+        //     'email_verified_at' => now(),
+        //     'password' => bcrypt('123'),
+        //     'remember_token' => Str::random(10),
+        // ]);
+        $user = \App\Models\User::create([
+            'name' => 'Adrian',
+            'email' => 'adrian@email.com',
             'email_verified_at' => now(),
-            'password' => bcrypt('123'),
+            'password' => bcrypt('asd123__'),
             'remember_token' => Str::random(10),
         ]);
+        $user->assignRole('Super-Admin');
         $this->call(CryptListSeeder::class);
+        $this->call(MenuSeeder::class);
     }
 }

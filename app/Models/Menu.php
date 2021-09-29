@@ -8,8 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Menu extends Model
 {
     use HasFactory;
-
-    public function sub_menus(){
+    public $fillable = [
+        "order",
+        "menu_name",
+        "add_on_name",
+        "icon",
+        "route",
+        "dropdown",
+        "is_default",
+        "role_access"
+    ];
+    public function sub_menus()
+    {
         return $this->hasMany(SubMenu::class);
     }
 }
