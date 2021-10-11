@@ -40,9 +40,10 @@ Route::post('/email/verification-notification', function (Request $request) {
 
     return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
-
+Route::get('getData', [DashboardController::class, 'getData']);
 Route::group(['middleware' => 'auth', 'prefix' => 'dashboard'],function(){
     Route::post('items', [DashboardController::class, 'DashboardItems']);
+    Route::get('items', [DashboardController::class, 'DashboardItems']);
 });
 Route::get('/{any}', [App\Http\Controllers\HomeController::class, 'index'])->where('any', '.*')->name('home');
 Route::get('/users','App\Http\Controllers\UserController@index');
